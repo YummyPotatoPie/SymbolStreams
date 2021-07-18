@@ -10,14 +10,14 @@
         /// Returns current symbol at the stream
         /// </summary>
         /// <returns>Current stream symbol</returns>
-        public T PeekSymbol();
+        public T Peek();
 
         /// <summary>
         /// Reads next symbol at the stream
         /// </summary>
         /// <param name="symbol">A variable for setting the value of the next symbol in it</param>
         /// <returns>True if read next symbol otherwise false</returns>
-        public bool NextSymbol(out T symbol);
+        public bool Next(out T symbol);
 
         /// <summary>
         /// Checks if the stream has reached the end of the file

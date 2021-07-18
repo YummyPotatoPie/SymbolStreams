@@ -22,9 +22,9 @@
         /// <param name="loadedStream">Loaded stream input</param>
         public LoadedStream(T[] loadedStream) => _loadedStream = loadedStream;
 
-        public virtual T PeekSymbol() => _loadedStream[_position];
+        public virtual T Peek() => _loadedStream[_position];
 
-        public virtual bool NextSymbol(out T symbol)
+        public virtual bool Next(out T symbol)
         {
             if (EndOfStream())
             {

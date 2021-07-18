@@ -24,8 +24,17 @@
 
         public virtual T PeekSymbol() => _loadedStream[_position];
 
-        public virtual T NextSymbol() => _loadedStream[++_position];
+        public virtual bool NextSymbol(out T symbol)
+        {
+            if (EndOfStream())
+            {
+                symbol = default;
+                return false;
+            }
+            symbol = _loadedStream[++_position];
+            return true;
+        }
 
-        public virtual bool EndOfStream() => _position == _loadedStream.Length;
+        public virtual bool EndOfStream() => _position == _loadedStream.Length - 1;
     }
 }

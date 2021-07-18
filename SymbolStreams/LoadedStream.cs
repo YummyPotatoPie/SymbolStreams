@@ -12,26 +12,14 @@
         private T[] _loadedStream;
 
         /// <summary>
-        /// 
+        /// Current position at stream
         /// </summary>
         private int _position = 0;
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <returns></returns>
         public virtual T PeekSymbol() => _loadedStream[_position];
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <returns></returns>
         public virtual T NextSymbol() => _loadedStream[++_position];
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <returns></returns>
         public virtual bool EndOfStream() => _position == _loadedStream.Length;
     }
 }

@@ -9,12 +9,18 @@
         /// <summary>
         /// Information from input
         /// </summary>
-        private T[] _loadedStream;
+        private readonly T[] _loadedStream;
 
         /// <summary>
         /// Current position at stream
         /// </summary>
         private int _position = 0;
+
+        /// <summary>
+        /// sets the loaded information as a stream
+        /// </summary>
+        /// <param name="loadedStream">Loaded stream input</param>
+        public LoadedStream(T[] loadedStream) => _loadedStream = loadedStream;
 
         public virtual T PeekSymbol() => _loadedStream[_position];
 

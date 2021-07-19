@@ -9,20 +9,20 @@
         /// <summary>
         /// Information from input
         /// </summary>
-        private readonly T[] _loadedStream;
+        protected readonly T[] LoadedStreamData;
 
         /// <summary>
         /// Current position at stream
         /// </summary>
-        private int _position = 0;
+        protected int Position = 0;
 
         /// <summary>
-        /// sets the loaded information as a stream
+        /// Sets the loaded information as a stream
         /// </summary>
         /// <param name="loadedStream">Loaded stream input</param>
-        public LoadedStream(T[] loadedStream) => _loadedStream = loadedStream;
+        public LoadedStream(T[] loadedStream) => LoadedStreamData = loadedStream;
 
-        public virtual T Peek() => _loadedStream[_position];
+        public virtual T Peek() => LoadedStreamData[Position];
 
         public virtual bool Next(out T symbol)
         {
@@ -31,10 +31,10 @@
                 symbol = default;
                 return false;
             }
-            symbol = _loadedStream[++_position];
+            symbol = LoadedStreamData[++Position];
             return true;
         }
 
-        public virtual bool EndOfStream() => _position == _loadedStream.Length - 1;
+        public virtual bool EndOfStream() => Position == LoadedStreamData.Length - 1;
     }
 }

@@ -24,7 +24,15 @@
 
         public virtual T Peek() => EndOfStream() ? default : LoadedStreamData[Position];
 
-        public virtual T Next() => Position == LoadedStreamData.Length - 1 ? default : LoadedStreamData[++Position];
+        public virtual T Next()
+        {
+            if (Position == LoadedStreamData.Length - 1)
+            {
+                Position++;
+                return default;
+            }
+            return LoadedStreamData[++Position];
+        }
 
         public virtual bool EndOfStream() => Position == LoadedStreamData.Length;
 

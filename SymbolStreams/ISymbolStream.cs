@@ -15,14 +15,18 @@
         /// <summary>
         /// Reads next symbol at the stream
         /// </summary>
-        /// <param name="symbol">A variable for setting the value of the next symbol in it</param>
-        /// <returns>True if read next symbol otherwise false</returns>
-        public bool Next(out T symbol);
+        /// <returns>Return default value of T if reached final symbol at the stream, otherwise return next symbol at the stream</returns>
+        public T Next();
 
         /// <summary>
         /// Checks if the stream has reached the end of the file
         /// </summary>
         /// <returns>Returns true if stream reaches the end of file, otherwise returns false</returns>
         public bool EndOfStream();
+
+        /// <summary>
+        /// Reset stream position
+        /// </summary>
+        public void Reset();
     }
 }

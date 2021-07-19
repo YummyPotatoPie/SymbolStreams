@@ -43,7 +43,7 @@ namespace SymbolStreams
             return true;
         }
 
-        public void Reset() => Position = -1;
+        public override void Reset() => Position = -1;
         
         public void Dispose() => GC.SuppressFinalize(this);
     }

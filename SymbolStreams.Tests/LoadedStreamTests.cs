@@ -1,7 +1,6 @@
 using System;
 using SymbolStreams;
 using Xunit;
-
 namespace SymbolStreamsTests
 {
     public class LoadedStreamTests
@@ -16,7 +15,11 @@ namespace SymbolStreamsTests
             // Act
             string result = "";
             char buffer = loadedStream.Peek();
-            do result += buffer; while (loadedStream.Next(out buffer));
+            while (buffer != default)
+            {
+                result += buffer;
+                buffer = loadedStream.Next();
+            }
 
             // Assert
             Assert.Equal(testData, result);

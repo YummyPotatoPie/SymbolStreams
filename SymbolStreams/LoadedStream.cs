@@ -22,19 +22,12 @@
         /// <param name="loadedStream">Loaded stream input</param>
         public LoadedStream(T[] loadedStream) => LoadedStreamData = loadedStream;
 
-        public virtual T Peek() => LoadedStreamData[Position];
+        public virtual T Peek() => EndOfStream() ? default : LoadedStreamData[Position];
 
-        public virtual bool Next(out T symbol)
-        {
-            if (EndOfStream())
-            {
-                symbol = default;
-                return false;
-            }
-            symbol = LoadedStreamData[++Position];
-            return true;
-        }
+        public virtual T Next() => Position == LoadedStreamData.Length - 1 ? default : LoadedStreamData[++Position];
 
-        public virtual bool EndOfStream() => Position == LoadedStreamData.Length - 1;
+        public virtual bool EndOfStream() => Position == LoadedStreamData.Length;
+
+        public virtual void Reset() => Position = 0;
     }
 }
